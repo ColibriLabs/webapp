@@ -12,14 +12,14 @@ trait ModelNameAwareTrait
     /**
      * @var string
      */
-    public $entity;
+    public $mapper;
     
     /**
      * @return string
      */
     public function getEntityName()
     {
-        return $this->entity;
+        return $this->mapper;
     }
     
     /**
@@ -27,7 +27,7 @@ trait ModelNameAwareTrait
      */
     public function setEntityName($modelName)
     {
-        $this->entity = $modelName;
+        $this->mapper = $modelName;
     }
     
     /**
@@ -46,7 +46,7 @@ trait ModelNameAwareTrait
     {
         list($name, $prefix) = array_reverse(explode('\\', $className));
         
-        return sprintf('%s.%s', lcfirst($prefix), lcfirst($name));
+        return sprintf('%s:%s', lcfirst($prefix), ucfirst($name));
     }
     
 }
