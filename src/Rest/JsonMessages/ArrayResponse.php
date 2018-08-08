@@ -20,4 +20,22 @@ class ArrayResponse extends AbstractResponse
         }
     }
     
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return property_exists($this, $name) ? $this->{$name} : null;
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $this->{$name} = $value;
+    }
+    
 }
