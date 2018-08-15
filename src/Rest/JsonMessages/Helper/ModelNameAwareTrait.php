@@ -45,8 +45,10 @@ trait ModelNameAwareTrait
     private function normalizeClassName($className)
     {
         list($name, $prefix) = array_reverse(explode('\\', $className));
-        
-        return sprintf('%s:%s', lcfirst($prefix), ucfirst($name));
+
+        $suffix = preg_replace('/response$/i', null, lcfirst($name));
+
+        return sprintf('%s.%s', lcfirst($prefix), $suffix);
     }
     
 }
